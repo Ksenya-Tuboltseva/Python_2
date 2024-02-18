@@ -26,12 +26,23 @@ for item in lst:
     else: 
         word_dic[item] = 1
 
-i = 0
+word_dic = sorted(word_dic.items(), key=lambda x: x[1])
 
-for key, val in word_dic.items():
-    while i < 10:
-        if val == max(word_dic.values()):
-            print(key)
-            word_dic[key] = 0
-            i += 1
+for i in range(1, 11):
+    print(word_dic[-i][0])
+
+##Создайте словарь со списком вещей для похода в качестве ключа и их массой в качестве значения. Определите какие вещи влезут в рюкзак передав его максимальную грузоподъёмность. Достаточно вернуть один допустимый вариант.*Верните все возможные варианты комплектации рюкзака.
+bag = {"палатка": 15, "тушенка": 3, "удочка": 2, "котел": 3, "вода": 6, "полотенце": 0.2, "дождевик": 0.3, "нож": 0.4, "веревка": 5, "фонарь":0.2}
+max_weight = 30
+weight = 0
+bag_lst = []
+for key, val in bag.items():
+    if weight <= max_weight:
+        weight += bag[key]
+        if weight <= max_weight:
+            bag_lst.append(key)
+
+print(bag_lst)
+        
+
 
